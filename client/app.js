@@ -18,7 +18,7 @@ app.config(['$locationProvider', '$routeProvider', '$httpProvider', function ($l
     $locationProvider.html5Mode(true).hashPrefix('!');
 }]);
 
-app.controller('ProductListCtrl', ['$scope','rest', function($scope, rest) {
+app.controller('ProductListCtrl', ['$scope','rest','$filter', function($scope, rest, filter) {
         rest.path ='product/list';
         rest.get().success(function(data){
             $scope.products = data;

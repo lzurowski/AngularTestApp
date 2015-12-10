@@ -1,15 +1,15 @@
 <table st-table="products" class="table table-striped">
 	<thead>
 	<tr>
-		<th>productCode</th>
-		<th>productName</th>
-		<th>productLine</th>
-		<th>productScale</th>
-		<th>productVendor</th>
-                <th>productDescription</th>
-                <th>quantityInStock</th>
-                <th>buyPrice</th>
-                <th>MSRP</th>
+		<th st-sort="productCode">productCode</th>
+		<th st-sort="productName">productName</th>
+		<th st-sort="productLine">productLine</th>
+		<th st-sort="productScale">productScale</th>
+		<th st-sort="productVendor">productVendor</th>
+                <th st-sort="productDescription">productDescription</th>
+                <th st-sort="quantityInStock">quantityInStock</th>
+                <th st-sort="buyPrice">buyPrice</th>
+                <th st-sort="MSRP">MSRP</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -21,8 +21,8 @@
 		<td>{{p.productVendor}}</td>
                 <td>{{p.productDescription}}</td>
 		<td>{{p.quantityInStock}}</td>
-		<td>{{p.buyPrice}}</td>
-		<td>{{p.MSRP}}</td>
+		<td>{{p.buyPrice | currency}}</td>
+		<td>{{p.MSRP | currency}}</td>
 	</tr>
 	</tbody>
 </table>
