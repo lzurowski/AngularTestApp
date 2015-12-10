@@ -1,0 +1,16 @@
+{
+    "name": "AngullarTestApp",
+    "version": "0.0.1",
+    "dependencies": {
+        "angular": "~1.4",
+        "angular-i18n": "~1.4",
+        "angular-animate": "~1.4",
+        "angular-route": "~1.4",
+        "angular-motion": "~0.4",
+        "angular-cookies": "~1.4",
+        "angular-sanitize": "~1.4",
+        "angular-strap": "~2.2",        
+        "bootstrap": "~3.3",
+        "AngularJS-Toaster": "~0.4"
+    }
+}
