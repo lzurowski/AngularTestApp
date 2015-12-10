@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="products">
+<html ng-app="app">
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,31 +40,7 @@
 <p class="browsehappy"> Do poprawnego działania aplikacji wmagamy przegladarki:  Iternet Explorer w wersji minium 9.</p>
 <![endif]-->
 
-    <nav class="navbar navbar-default" role="navigation" bs-navbar>
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">PI Logo</a>
-            </div>
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li data-match-route="bill/list"><a href="bill/list">Rachunki</a></li>
-                    <li data-match-route="bill/payment"><a href="bill/payment">Wpłaty, wypłaty</a></li>
-                    <li data-match-route="message/list"><a href="message/list">Wiadomości</a></li>
-                    <li data-match-route="profile"><a href="profile">Mój profil</a></li>
-                    <li data-match-route="download"><a href="download">Pobierz</a></li>
-                    <li data-match-route="webinar/webinarList"><a href="webinar/webinarList">Webinaria</a></li>
-                    <li login></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+    <h1 class="label label-primary">Angular test APP</h1>
     <div class="container view-animate-container">
         <div ng-view class="am-fade-and-slide-top">
         </div>
@@ -82,7 +58,8 @@
     <script src="vendor/AngularJS-Toaster/toaster.js"></script>
     <script src="vendor/angular-strap/dist/angular-strap.js"></script>
     <script src="vendor/angular-strap/dist/angular-strap.tpl.min.js"></script>
-
+    <script src="vendor/angular-smart-table/dist/smart-table.min.js"></script>
+    
     <script src="app.js"></script>
 </body>
 

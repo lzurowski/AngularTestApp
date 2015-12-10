@@ -1,0 +1,29 @@
+<table st-table="products" class="table table-striped">
+	<thead>
+	<tr>
+		<th>productCode</th>
+		<th>productName</th>
+		<th>productLine</th>
+		<th>productScale</th>
+		<th>productVendor</th>
+                <th>productDescription</th>
+                <th>quantityInStock</th>
+                <th>buyPrice</th>
+                <th>MSRP</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="p in products">
+		<td>{{p.productCode}}</td>
+		<td>{{p.productName}}</td>
+		<td>{{p.productLine}}</td>
+		<td>{{p.productScale}}</td>
+		<td>{{p.productVendor}}</td>
+                <td>{{p.productDescription}}</td>
+		<td>{{p.quantityInStock}}</td>
+		<td>{{p.buyPrice}}</td>
+		<td>{{p.MSRP}}</td>
+	</tr>
+	</tbody>
+</table>
+

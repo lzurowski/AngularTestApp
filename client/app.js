@@ -1,4 +1,4 @@
-var app = angular.module('pi2', ['ngRoute', 'ngAnimate', 'toaster', 'ngSanitize', 'mgcrea.ngStrap']);
+var app = angular.module('app', ['ngRoute', 'ngAnimate', 'toaster', 'ngSanitize', 'mgcrea.ngStrap','smart-table']);
 
 app.value('app-version', '0.0.1');
 
@@ -6,6 +6,7 @@ app.config(['$locationProvider', '$routeProvider', '$httpProvider', function ($l
 
     $routeProvider
         .when('/', {
+            controller: 'ProductListCtrl',    
             templateUrl: '/views/list.html'
         })        
         .when('/404', {
@@ -15,58 +16,24 @@ app.config(['$locationProvider', '$routeProvider', '$httpProvider', function ($l
     ;
 
     $locationProvider.html5Mode(true).hashPrefix('!');
-    $httpProvider.interceptors.push('authInterceptor');
 }]);
 
-//redirect if not auth
-app.run(['$rootScope', '$location',  '$route', 'rest','errorCallback', function ($rootScope, $location, $route, rest, errorCallback) {
-    $rootScope.$on('$routeChangeStart', function (event, next, current) {
-        if (true === next.requireAuth) {
-            //sprawdzamy czy uzytkownik jest zalogowany zalogowany 
-            rest.path = 'user/is-logged';
-            /*var errorCallback = function (data) {
-                toaster.clear();
-                toaster.pop("Status: " + data.status + " " + data.name, data.message);
-            };*/
-            rest.get().success(function (data) {}).error(errorCallback);
-            event.preventDefault();
-        }
-       
-    });
+app.controller('ProductListCtrl', ['$scope','rest', function($scope, rest) {
+        rest.path ='product/list';
+        rest.get().success(function(data){
+            $scope.products = data;
+        });
+        
+
 }]);
 
-app.factory('errorCallback', function(toaster){
-        var errorCallback = function (data) {
-            toaster.clear();
-            toaster.pop("Status: " + data.status + " " + data.name, data.message);
-        };
-        return errorCallback;
-});
-
-app.factory('authInterceptor', function ($q, $window, $location) {
-    return {
-        request: function (config) {
-            if ($window.sessionStorage.access_token) {
-                //HttpBearerAuth
-                config.headers.Authorization = 'Bearer ' + $window.sessionStorage.access_token;
-            }
-            return config;
-        },
-        responseError: function (rejection) {
-            if (rejection.status === 401) {
-                $location.path('/login').replace();
-            }
-            return $q.reject(rejection);
-        }
-    };
-});
 
 // Need set url REST Api in controller!
 app.service('rest', function ($http, $location, $routeParams) {
 
     return {
 
-        baseUrl: 'http://rest.pi2.loc/',
+        baseUrl: 'http://server.at.loc/index.php/',
         path: undefined,
 
         models: function () {
@@ -99,25 +66,3 @@ app.service('rest', function ($http, $location, $routeParams) {
     };
 
 });
-
-app.directive('login', ['$http', function ($http) {
-        return {
-            transclude: true,
-            link: function (scope, element, attrs) {
-                scope.isGuest = window.sessionStorage.access_token == undefined;
-            },
-            template: '<a href="login" ng-if="isGuest">Login</a>'
-        }
-    }])
-    .filter('checkmark', function () {
-        return function (input) {
-            return input ? '\u2713' : '\u2718';
-        };
-    });
-
-
-app.filter('trusted', ['$sce', function ($sce) {
-    return function(url) {
-        return $sce.trustAsResourceUrl(url);
-    };
-}]);
