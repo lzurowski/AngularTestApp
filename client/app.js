@@ -33,7 +33,7 @@ app.service('rest', function ($http, $location, $routeParams) {
 
     return {
 
-        baseUrl: 'http://server.at.loc/index.php/',
+        baseUrl: 'http://server.za.loc/index.php/',
         path: undefined,
 
         models: function () {

@@ -49,16 +49,11 @@ class ProductController extends Controller
     
 
     public function actionList(){
-        $pf = file_get_contents(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'db/products.json');
-        $arrProducts = json_decode($pf);
-        $arrP = [];
-        $i=0;
-        foreach ($arrProducts as $p){
-            $arrP[$p->productCode] = $p;
-            $i++;
-           // if($i > 20) break;
-        }
-        
+        $arrProducts = [];
+        $arrProductsObj = \app\models\Product::find()->all();
+        foreach($arrProductsObj as $p){
+            $arrProducts[$p->productCode] = $p->toArray();
+        }        
         echo json_encode($arrProducts);
         Yii::$app->end();
     } 

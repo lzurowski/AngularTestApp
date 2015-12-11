@@ -18,9 +18,15 @@ $config = [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
-        'errorHandler' => [
+        //'bootstrap' => ['gii'],
+        /*'modules' => [
+            'gii' => [
+                'class' => 'yii\gii\Module',
+            ],
+        ],*/       
+        /*'errorHandler' => [
             'errorAction' => 'site/error',
-        ],
+        ],*/
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             // send all mails to a file by default. You have to set
@@ -44,7 +50,7 @@ $config = [
         /*'rules' => [
             ['class' => 'yii\rest\UrlRule', 'controller' => 'user'],
         ],*/
-    ],
+        ],
         'db' => require(__DIR__ . '/db.php'),
     ],
     'params' => $params,
